@@ -1,17 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from 'src/users/users.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 
 @Entity()
-export class History {
+export class Weather {
   @PrimaryGeneratedColumn()
   @ApiProperty({ example: 1})
   id: number;
-
-  @ManyToOne(() => User, (user) => user.history)
-  @ApiProperty({ example: '2023-10-28 10:00:00', description: 'Время выполнения действия' })
-  user: User;
 
   @Column({ type: 'timestamp' })
   @ApiProperty({ example: 200, description: 'Результат выполнения запроса' })
@@ -31,4 +26,5 @@ export class History {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
 }

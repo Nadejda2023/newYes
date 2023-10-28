@@ -19,6 +19,7 @@ export class CreateUserDto implements UserCreationAttrs {
    @ApiProperty({example: 'Попова Надежда Викторовна', description: 'ФИО пользователя'})
    @IsString({message: 'Должно быть строкой'})
    readonly fio! : string; 
+   
 
     
 }

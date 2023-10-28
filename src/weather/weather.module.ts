@@ -1,11 +1,17 @@
 import { Module} from '@nestjs/common';
 import { WeatherService } from './weather.service';
 import { WeatherController } from './weather.controller';
-import { HttpModule } from '@nestjs/axios';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Weather } from './weather.entity';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
-  imports: [HttpModule],
+    imports: [TypeOrmModule.forFeature([Weather])],
   controllers: [WeatherController],
-  providers: [WeatherService],
+  providers: [WeatherService,JwtService],
+  exports: [
+    WeatherModule
+    
+]
 })
-export class AppModule {}
+export class WeatherModule {}

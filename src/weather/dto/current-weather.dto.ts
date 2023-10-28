@@ -2,7 +2,7 @@
 import { IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CurrentWeatherDto {
+export class WeatherRequestDto {
   @ApiProperty({ example: 'Tyumen', description: 'City name' })
   @IsString()
   city: string;

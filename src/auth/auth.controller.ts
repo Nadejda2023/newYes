@@ -17,7 +17,7 @@ export class authController {
 
     }
 
-    @UseGuards(JwtAuthGuard)
+    //@UseGuards(JwtAuthGuard)
     @Post('/registration')
     registration(@Body() userDto: CreateUserDto) {
         return this.authService.registration(userDto)

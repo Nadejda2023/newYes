@@ -2,10 +2,11 @@ import { Controller, Post, Body, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { WeatherService } from './weather.service';
-import { CurrentWeatherDto } from './dto/current-weather.dto';
+import { WeatherRequestDto } from './dto/current-weather.dto';
 
 
-@ApiTags('Weather')
+
+@ApiTags('Погода')
 @Controller('weather')
 
 
@@ -14,7 +15,9 @@ export class WeatherController {
 
   @UseGuards(JwtAuthGuard)
   @Post('current')
-  async getCurrentWeather(@Body() currentWeatherDto: CurrentWeatherDto): Promise<History> {
-    return this.weatherService.getCurrentWeather(currentWeatherDto.city, currentWeatherDto.language);
+  async getCurrentWeather(@Body() weatherRequest: WeatherRequestDto) {
+    const { city, language } = weatherRequest;
+    const weatherData = await this.weatherService.getCurrentWeather(city, language);
+    return weatherData;
   }
 }

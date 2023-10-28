@@ -6,6 +6,7 @@ import { UsersController } from "./users/users.controller";
 import { UsersService } from "./users/users.service";
 import { User } from "./users/users.entity";
 import { AuthModule } from "./auth/auth.module";
+import { WeatherModule } from "./weather/weather.module";
 
 
 
@@ -35,7 +36,8 @@ import { AuthModule } from "./auth/auth.module";
           //autoLoadEntities: true чтобы автоматом записывались сущности в бд
         }),
         UsersModule,
-        AuthModule
+        AuthModule,
+        WeatherModule,
         
         
       ],
