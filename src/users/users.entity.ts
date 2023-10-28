@@ -1,7 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn, Table } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+
+
 
 export interface UserCreationAttrs {
+    id:number;
     login: string;
     password: string;
     fio: string;
@@ -25,6 +28,9 @@ export class User {
     @Column({ nullable: false })
     fio!:string;
 
+
+   // @OneToMany(() => History, (history) => history.user)
+   //history: History[];
 
     //@Column({ unique: true , nullable: false })
     //apiToken!:string;

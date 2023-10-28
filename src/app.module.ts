@@ -5,17 +5,21 @@ import { UsersModule } from "./users/users.module";
 import { UsersController } from "./users/users.controller";
 import { UsersService } from "./users/users.service";
 import { User } from "./users/users.entity";
-import { DataSource } from "typeorm";
+import { AuthModule } from "./auth/auth.module";
+
 
 
 
 @Module({
-    controllers: [UsersController],
-    providers: [UsersService],
+    controllers: [],
+    providers: [], 
     imports: [
+      
+      
       ConfigModule.forRoot({
         envFilePath: `.${process.env.NODE_ENV}.env`
       }),
+      
         TypeOrmModule.forRoot({
           type: 'mysql',
           host: process.env.MYSQL_HOST,
@@ -31,6 +35,9 @@ import { DataSource } from "typeorm";
           //autoLoadEntities: true чтобы автоматом записывались сущности в бд
         }),
         UsersModule,
+        AuthModule
+        
+        
       ],
       
 })
